@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Requirement extends Model
 {
-
     protected $guarded = ['id'];
-
+    
     use HasFactory;
 
-    //Relacion uno a muchos
+    // Relacion uno a michos Inversa
 
-    public function courses()
+    public function course()
     {
-        return $this->hasMany('App\Models\Course');
+        return $this->belongsTo('App\Models\Course');
     }
 }

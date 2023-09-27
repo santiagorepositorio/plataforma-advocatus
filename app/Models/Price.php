@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Price extends Model
 {
+    protected $guarded = ['id'];
+
     use HasFactory;
 
     //Relacion uno a muchos
+
     public function courses()
     {
         return $this->hasMany('App\Models\Course');

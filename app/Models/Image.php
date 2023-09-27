@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Image extends Model
 {
 
     protected $guarded = ['id'];
-
+    
     use HasFactory;
 
-    //Relacion uno a muchos
+    // Relacion polimorfica
 
-    public function courses()
+    public function imageable()
     {
-        return $this->hasMany('App\Models\Course');
+        return $this->morphTo();
     }
 }

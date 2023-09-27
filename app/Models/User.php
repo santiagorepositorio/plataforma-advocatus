@@ -61,13 +61,15 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    //Relacion uno a uno con profile
+    //Relacion uno a uno
+
     public function profile()
     {
         return $this->hasOne('App\Models\Profile');
     }
 
     //Relacion uno a muchos
+
     public function courses_dictated()
     {
         return $this->hasMany('App\Models\Course');
@@ -78,9 +80,25 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Review');
     }
 
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function reaction()
+    {
+        return $this->hasMany('App\Models\Reaction');
+    }
+
     //Relacion muchos a muchos
+
     public function courses_enrolled()
     {
         return $this->belongsToMany('App\Models\Course');
+    }
+
+    public function lessons()
+    {
+        return $this->belongsToMany('App\Models\Lesson');
     }
 }

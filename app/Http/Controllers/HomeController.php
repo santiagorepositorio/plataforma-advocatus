@@ -2,27 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Cli\Invoker;
 use Illuminate\Http\Request;
+
+use App\Models\Course;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __invoke()
     {
-        $this->middleware('auth');
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
+        $courses = Course::where('status', '3')->latest('id')->get();
+
+        //return $courses;
+
+        return view('welcome', compact('courses'));
     }
 }

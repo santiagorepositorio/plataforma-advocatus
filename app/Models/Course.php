@@ -26,6 +26,11 @@ class Course extends Model
         }
     }
 
+    public function getRouteKeyName()
+    {
+        return "slug";
+    }
+
     //Relacion uno a muchos
 
     public function reviews()
@@ -45,7 +50,7 @@ class Course extends Model
 
     public function audiences()
     {
-        return $this->hasMany('App\Models\Audiencce');
+        return $this->hasMany('App\Models\Audience');
     }
 
     public function sections()

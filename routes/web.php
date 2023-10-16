@@ -21,6 +21,10 @@ Route::middleware([
 
 Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
 
-Route::get('cursos/{course}', function ($course) {
-    return "Aqui se mostrara la informacion de los cursos";
-})->name('courses.show');
+Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.show');
+
+Route::post('cursos/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
+
+Route::get('cursos-status/{course}', function ($course) {
+    return "Aqui podras llevar el control del avance";
+})->name('course.status');
